@@ -18,8 +18,8 @@ int main() {
 	}
 
 	// Checking validity with if/else
-	std::cout << "Header \"Settings\" does ";
-	if (ip.HeaderExists("Settings")) {
+	std::cout << "Section \"Settings\" does ";
+	if (ip.SectionExists("Settings")) {
 		std::cout << "exist" << std::endl;
 		
 		std::cout << "\tKey Settings/thing1 ";
@@ -46,8 +46,8 @@ int main() {
 	} else 
 		std::cout << "NOT exist" << std::endl;
 
-	std::cout << "Header \"Data\" does ";
-	if (ip.HeaderExists("Data")) {
+	std::cout << "Section \"Data\" does ";
+	if (ip.SectionExists("Data")) {
 		std::cout << "exist" << std::endl;
 
 		std::cout << "\tKey Data/info1 ";
@@ -67,8 +67,8 @@ int main() {
 	} else
 		std::cout << "NOT exist" << std::endl;
 
-	std::cout << "Header \"Nonexistent\" does ";
-	if (!ip.HeaderExists("Nonexistent"))
+	std::cout << "Section \"Nonexistent\" does ";
+	if (!ip.SectionExists("Nonexistent"))
 		std::cout << "NOT ";
 	std::cout << "exist" << std::endl;
 
@@ -76,20 +76,20 @@ int main() {
 	try {
 		std::cout << "Nonexistent/nope = " << ip.GetKeyValue("Nonexistent",
 			"nope") << std::endl;
-	} catch (HeaderNotFoundException h) {
-		std::cout << "Header " << h.GetName() << " wasn't found" << std::endl;
+	} catch (SectionNotFoundException h) {
+		std::cout << "Section " << h.GetName() << " wasn't found" << std::endl;
 	} catch (KeyNotFoundException k) {
-		std::cout << "Key " << k.GetHeaderName() << "/" << k.GetName() <<
+		std::cout << "Key " << k.GetSectionName() << "/" << k.GetName() <<
 			" wasn't found" << std::endl;
 	}
 
 	try {
 		std::cout << "Settings/nope = " << ip.GetKeyValue("Settings",
 			"nope") << std::endl;
-	} catch (HeaderNotFoundException h) {
-		std::cout << "Header " << h.GetName() << " wasn't found" << std::endl;
+	} catch (SectionNotFoundException h) {
+		std::cout << "Section " << h.GetName() << " wasn't found" << std::endl;
 	} catch (KeyNotFoundException k) {
-		std::cout << "Key " << k.GetHeaderName() << "/" << k.GetName() <<
+		std::cout << "Key " << k.GetSectionName() << "/" << k.GetName() <<
 			" wasn't found" << std::endl;
 	}
 

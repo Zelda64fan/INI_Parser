@@ -6,6 +6,7 @@
 // Implementation of INI_Parser.h
 
 #include "INI_Parser.h"
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 
@@ -79,7 +80,7 @@ char INI_Parser::ReadFile(std::string file) {
 			// lowercase first, since these should not be case sensitive
 			std::transform(section_buf.begin(), section_buf.end(),
 				section_buf.begin(), ::tolower);
-			std::transform(key_buf.begin(), key.end(), key_buf.begin(),
+			std::transform(key_buf.begin(), key_buf.end(), key_buf.begin(),
 				::tolower);
 			keymap[section_buf][key_buf] = value_buf;	
 		}
