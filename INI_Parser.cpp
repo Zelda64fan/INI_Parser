@@ -15,7 +15,7 @@ INI_Parser::~INI_Parser() {
 	Unload();
 }
 
-int INI_Parser::ReadFile(std::string file) {
+char INI_Parser::ReadFile(std::string file) {
 	// If no headers are found, we return 2
 	bool found_headers = false;
 

@@ -2,6 +2,7 @@
 // Project: INI Parser class (test file)
 // Last update: 2015-01-13 by Adam Armbrester: first version
 // A test implementation of the INI_Parser class.
+// TODO: Clean this up?
 
 #include "INI_Parser.h"
 #include <iostream>
@@ -16,6 +17,7 @@ int main() {
 		return error;
 	}
 
+	// Checking validity with if/else
 	std::cout << "Header \"Settings\" does ";
 	if (ip.HeaderExists("Settings")) {
 		std::cout << "exist" << std::endl;
@@ -70,11 +72,26 @@ int main() {
 		std::cout << "NOT ";
 	std::cout << "exist" << std::endl;
 
-	std::cout << "Key Nonexistent/nope does";
-	if (!ip.KeyExists("Nonexistent", "nope"))
-		std::cout << "NOT";
-	std::cout << "exist" << std::endl;
+	// Checking with try/catch: quick example
+	try {
+		std::cout << "Nonexistent/nope = " << ip.GetKeyValue("Nonexistent",
+			"nope") << std::endl;
+	} catch (HeaderNotFoundException h) {
+		std::cout << "Header " << h.GetName() << " wasn't found" << std::endl;
+	} catch (KeyNotFoundException k) {
+		std::cout << "Key " << k.GetHeaderName() << "/" << k.GetName() <<
+			" wasn't found" << std::endl;
+	}
 
+	try {
+		std::cout << "Settings/nope = " << ip.GetKeyValue("Settings",
+			"nope") << std::endl;
+	} catch (HeaderNotFoundException h) {
+		std::cout << "Header " << h.GetName() << " wasn't found" << std::endl;
+	} catch (KeyNotFoundException k) {
+		std::cout << "Key " << k.GetHeaderName() << "/" << k.GetName() <<
+			" wasn't found" << std::endl;
+	}
 
 	return 0;
 }

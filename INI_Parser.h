@@ -44,7 +44,7 @@ public:
 	 * INI_READ_* consts for specific errors)
 	 * \return INI_READ_SUCCESS, INI_READ_NOT_FOUND, or INI_READ_NO_HEADERS,
 	 */
-	int ReadFile(std::string file);
+	char ReadFile(std::string file);
 
 	/** Check if the specified header exists.
 	 * \param header The header to look for.

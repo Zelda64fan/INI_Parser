@@ -3,6 +3,15 @@ Simple C++ class for parsing INI files
 
 I wrote this because I was bored. It's possible I had no idea what I was doing. This hasn't had much testing.
 
+If Wikipedia is correct about the format of these files (I didn't check it until
+ after I wrote this, because I'm lazy), this has some serious issues that I'll
+ fix eventually:
+
+1. Comments should start with a `;`. The `#` is OK too though.
+2. They're called sections, not headers.
+3. Escape characters are not processed.
+4. Sections and keys should not be case sensitive.
+
 It's for reading files structured like this:
 
 ```
