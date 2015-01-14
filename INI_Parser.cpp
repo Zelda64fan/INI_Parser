@@ -39,7 +39,7 @@ char INI_Parser::ReadFile(std::string file) {
 		getline(fin, line_buf);
 
 		// Skip comments and blank lines
-		if (line_buf[0] == '#' || line_buf == "")
+		if (line_buf[0] == ';' || line_buf[0] == '#' || line_buf == "")
 			continue;
 		
 		if (line_buf[0] == '[') {    // Start of a new section
